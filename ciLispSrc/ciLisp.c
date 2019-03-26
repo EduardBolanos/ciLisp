@@ -1,6 +1,4 @@
 // Eduard Bolanos
-// comp232
-// ciLisp Project
 // Completed ciLisp without any errors, using test cases provided to check everything works properly.
 
 #include "ciLisp.h"
