@@ -165,7 +165,6 @@ If an expression of type real is assigned to a symbol declared as integer, then 
 Adding, subtracting, multiplying, or negating operands of type integer should yield an s-expression with type integer; otherwise (i.e., if one of the operands is real), the type should be real. All other operations should return real values.
 
 # Task 4
-Task 4 (5 points)
 The following grammar expands the capabilities of ciLisp by adding print function.
 
 program ::= s-expr EOL 
@@ -196,9 +195,9 @@ letter ::= [a-zA-Z]
 digit ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 
 The following expression:
-> (print s_expr) 
+(print s_expr) 
 
-Should print the value of the s­expression in the format depending on the type of the expression:
+Should print the value of the s-expression in the format depending on the type of the expression:
 
 Real variables should print with double precision with two spaces after the dot (even if there are only zeros to the right of the dot),
 Untyped values should print as real values, 
@@ -206,12 +205,12 @@ And integer variables should print without any fraction part.
 
 The width of the print field should be minimized; i.e., values should use a tight format (no padding on the left).
 For example: 
-> ((let (integer a 1))(print a)) 
-=> 1 
-> ((let (real b 10))(print b)) 
-=> 10.00 
-> (print 100) 
-=> 100.00
+((let (integer a 1))(print a)) 
+ = 1 
+((let (real b 10))(print b)) 
+ = 10.00 
+(print 100) 
+ = 100.00
 
 # Task 5
 The following grammar expands the capability of ciLisp by adding support for parameter lists of arbitrary length.
@@ -279,16 +278,14 @@ typedef struct {
 } FUNC_AST_NODE;
 
 Expand the functionality of add, mult, and print, so they can handle multiple operands.
-> (add 1 2 3 4 5) 
-15.00 
->
+(add 1 2 3 4 5) 
+= 15.00 
 
 print should print the values of all s­expressions in the list in one line separated by spaces and return the value of the last s-expression in the list as its own value.
 
-> ((let (integer a 1)(real b 2))(print a b 3) 
+((let (integer a 1)(real b 2))(print a b 3) 
 => 1 2.00 3.00 
-3.00 
->
+= 3.00 
 
 # Task 6
 The following grammar expands the capability of ciLisp by adding conditional expressions and capability to read user provided­ and random values:
@@ -325,10 +322,9 @@ The following is the summary of changes:
 1. Added read as a parameter less function that takes values from the user.  The user should be prompted to enter a value by displaying a prompt:
     read :=
     A symbol can be set to a value obtained in from the input as follows:
-    > ((let (integer a (read)) (real b (read))) (print a b))  read := 3  read := 5.0  
+    ((let (integer a (read)) (real b (read))) (print a b))  read := 3  read := 5.0  
     => 3 5.00  
-    5.00  
-    >
+    5.00 
 NOTES:
 
    1.	The numbers entered by the user are in red just for visualization. Your program should not attempt to apply any colors to               printouts.
