@@ -4,7 +4,7 @@ This is a challenging project that requires your focus throughout a span of seve
 To implement the compiler, you will use flex (lex) and bison (yacc) that you learned in the previous labs. The implementation will span several stages; each stage will add a feature to the compiler. If you complete all stages (i.e., implement all specified features) then you will get maximum points for the whole project; otherwise, you will earn partial credits according to the number of features that you will have implemented.
 At each stage, expand the ciLisp compiler to handle compilation of ciLisp programs utilizing the expanded grammar. Then extend the evaluator of abstract syntax trees so it handles the new features. Write a program in ciLisp that forces both the compiler and the evaluator to thoroughly test the new functionality.
 
-#Task 1
+# Task 1
 We will be constructing abstract syntax trees representing the input s­expressions.
 Subsequently, the root of the abstract syntax tree will be passed to an evaluation function eval() that should evaluate the abstract syntax tree executing de facto the compiled version of the s­expressionbased program. In this way, function eval() implements a virtual machine executing compiled ciLisp programs in a way analogous to the way a JVM (Java Virtual Machine) executes compiled Java bytecode.
 ciLisp programs use the Cambridge Polish Notation (CPN) that is a special prefix notation for expressions (that we will call s­expressions), in which the operator name and the operands are enclosed in parentheses. For example, 1+2 (or add(1,2)) is denoted as:
@@ -21,7 +21,7 @@ The project already includes the code to construct basic abstract syntax trees c
 Your task is to implement the evaluation function eval().
 Please note that a parameter VERBOSE has been added to BISON_TARGET in CMakeLists.txt. That forces generation of a report file from the parser called ciLispParser.ouput and located in cmake-build-debug directory. It is worth exploring that file to get insight in the state machine that the parser generates and to check if there are any issues in the parsing like shift/reduce conflicts. Keep in mind that bison can deal with many conflicts, but it's possible for it to get confused with more complex issues.
 
-#Task 2
+# Task 2
 The following grammar extends the ciLisp grammar to accommodate variables that in Lisp jargon are called symbols. Variables exist in potentially nested scopes that can be defined by the let section construct preceding ciLisp functions. Each symbol assumes a value represented by the associated sexpression. A symbol can be any number of small and capital letters.
 
 program ::= s-expr EOL  
@@ -102,7 +102,7 @@ Write a program in ciLisp that forces the compiler and the evaluator to test the
 ((let (first (sub 5 1)) (second 2)) (add (pow 2 first) (sqrt second)))  
 ((let (a ((let (c 3) (d 4)) (mult c d)))) (sqrt a))
 
-#Task 3
+# Task 3
 The following grammar further expands the capabilities of ciLisp by adding types for variables:
 
 Integers should provide precision equivalent to a long integer in C.
@@ -162,7 +162,7 @@ If an expression of type real is assigned to a symbol declared as integer, then 
 
 Adding, subtracting, multiplying, or negating operands of type integer should yield an s­expression with type integer; otherwise (i.e., if one of the operands is real), the type should be real. All other operations should return real values.
 
-#Task 4
+# Task 4
 Task 4 (5 points)
 The following grammar expands the capabilities of ciLisp by adding print function.
 
@@ -210,7 +210,7 @@ For example:
 > (print 100) 
 => 100.00
 
-#Task 5
+# Task 5
 The following grammar expands the capability of ciLisp by adding support for parameter lists of arbitrary length.
 program ::= s-expr EOL  
  
@@ -280,7 +280,7 @@ print should print the values of all s­expressions in the list in one line sepa
 3.00 
 >
 
-#Task 6
+# Task 6
 The following grammar expands the capability of ciLisp by adding conditional expressions and capability to read user provided­ and random values:
 program ::= s-expr EOL  
 s-expr ::=       
@@ -351,7 +351,7 @@ typedef struct ast_node {
   } data;  
 } AST_NODE;
 
-#Task 7
+# Task 7
 The following grammar expands the capability of ciLisp by adding support for user­defined functions:
 program ::= s-expr EOL  
 s-expr ::=       quit  
