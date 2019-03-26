@@ -1,0 +1,737 @@
+> (add ((let (abcd 1)) (sub 3 abcd)) 4)
+lex: LPAREN
+lex: FUNC sval = add
+lex: LPAREN
+lex: LPAREN
+lex: LET
+lex: LPAREN
+lex: SYMBOL sval = abcd
+lex: NUMBER dval = 1.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+lex: RPAREN
+lex: LPAREN
+lex: FUNC sval = sub
+lex: NUMBER dval = 3.000000
+yacc: s_expr ::= NUMBER
+lex: SYMBOL sval = abcd
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: lex: NUMBER dval = 4.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: EOL
+yacc: program ::= s_expr EOL
+6.000000
+> (mult ((let (a 1) (b 2)) (add a b)) (sqrt 2))
+lex: LPAREN
+lex: FUNC sval = mult
+lex: LPAREN
+lex: LPAREN
+lex: LET
+lex: LPAREN
+lex: SYMBOL sval = a
+lex: NUMBER dval = 1.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+lex: LPAREN
+lex: SYMBOL sval = b
+lex: NUMBER dval = 2.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+lex: RPAREN
+lex: LPAREN
+lex: FUNC sval = add
+lex: SYMBOL sval = a
+lex: SYMBOL sval = b
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: lex: LPAREN
+lex: FUNC sval = sqrt
+lex: NUMBER dval = 2.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: EOL
+yacc: program ::= s_expr EOL
+WARNING: incompatible type assignment for variables in SQRT.
+4.242641
+> (add ((let (a ((let (b 2)) (mult b (sqrt 10))))) (div a 2)) ((let (c 5)) (sqrt c)))
+lex: LPAREN
+lex: FUNC sval = add
+lex: LPAREN
+lex: LPAREN
+lex: LET
+lex: LPAREN
+lex: SYMBOL sval = a
+lex: LPAREN
+lex: LPAREN
+lex: LET
+lex: LPAREN
+lex: SYMBOL sval = b
+lex: NUMBER dval = 2.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+lex: RPAREN
+lex: LPAREN
+lex: FUNC sval = mult
+lex: SYMBOL sval = b
+lex: LPAREN
+lex: FUNC sval = sqrt
+lex: NUMBER dval = 10.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: lex: RPAREN
+lex: RPAREN
+lex: LPAREN
+lex: FUNC sval = div
+lex: SYMBOL sval = a
+lex: NUMBER dval = 2.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: lex: LPAREN
+lex: LPAREN
+lex: LET
+lex: LPAREN
+lex: SYMBOL sval = c
+lex: NUMBER dval = 5.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+lex: RPAREN
+lex: LPAREN
+lex: FUNC sval = sqrt
+lex: SYMBOL sval = c
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: EOL
+yacc: program ::= s_expr EOL
+WARNING: incompatible type assignment for variables in SQRT.
+WARNING: incompatible type assignment for variables in SQRT.
+WARNING: incompatible type assignment for variables in SQRT.
+5.398346
+> ((let (first (sub 5 1)) (second 2)) (add (pow 2 first) (sqrt second)))
+lex: LPAREN
+lex: LPAREN
+lex: LET
+lex: LPAREN
+lex: SYMBOL sval = first
+lex: LPAREN
+lex: FUNC sval = sub
+lex: NUMBER dval = 5.000000
+yacc: s_expr ::= NUMBER
+lex: NUMBER dval = 1.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+lex: LPAREN
+lex: SYMBOL sval = second
+lex: NUMBER dval = 2.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+lex: RPAREN
+lex: LPAREN
+lex: FUNC sval = add
+lex: LPAREN
+lex: FUNC sval = pow
+lex: NUMBER dval = 2.000000
+yacc: s_expr ::= NUMBER
+lex: SYMBOL sval = first
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: LPAREN
+lex: FUNC sval = sqrt
+lex: SYMBOL sval = second
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: lex: EOL
+yacc: program ::= s_expr EOL
+WARNING: incompatible type assignment for variables in POW.
+WARNING: incompatible type assignment for variables in SQRT.
+17.414214
+> ((let (a ((let (c 3) (d 4)) (mult c d)))) (sqrt a))
+lex: LPAREN
+lex: LPAREN
+lex: LET
+lex: LPAREN
+lex: SYMBOL sval = a
+lex: LPAREN
+lex: LPAREN
+lex: LET
+lex: LPAREN
+lex: SYMBOL sval = c
+lex: NUMBER dval = 3.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+lex: LPAREN
+lex: SYMBOL sval = d
+lex: NUMBER dval = 4.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+lex: RPAREN
+lex: LPAREN
+lex: FUNC sval = mult
+lex: SYMBOL sval = c
+lex: SYMBOL sval = d
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: lex: RPAREN
+lex: RPAREN
+lex: LPAREN
+lex: FUNC sval = sqrt
+lex: SYMBOL sval = a
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: lex: EOL
+yacc: program ::= s_expr EOL
+3.464102
+> ((let (integer a 1))(print a))
+lex: LPAREN
+lex: LPAREN
+lex: LET
+lex: LPAREN
+lex:  TYPE sval = integer
+lex: SYMBOL sval = a
+lex: NUMBER dval = 1.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+lex: RPAREN
+lex: LPAREN
+lex: FUNC sval = print
+lex: SYMBOL sval = a
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: lex: EOL
+yacc: program ::= s_expr EOL
+=> 1
+1.000000
+> ((let (real b 10))(print b))
+lex: LPAREN
+lex: LPAREN
+lex: LET
+lex: LPAREN
+lex:  TYPE sval = real
+lex: SYMBOL sval = b
+lex: NUMBER dval = 10.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+lex: RPAREN
+lex: LPAREN
+lex: FUNC sval = print
+lex: SYMBOL sval = b
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: lex: EOL
+yacc: program ::= s_expr EOL
+=> 10
+10.000000
+> ((let (integer a (read)) (real b (read))) (print a b))
+lex: LPAREN
+lex: LPAREN
+lex: LET
+lex: LPAREN
+lex:  TYPE sval = integer
+lex: SYMBOL sval = a
+lex: LPAREN
+lex: FUNC sval = read
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+read := 3
+lex: RPAREN
+lex: LPAREN
+lex:  TYPE sval = real
+lex: SYMBOL sval = b
+lex: LPAREN
+lex: FUNC sval = read
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+read := 5.0
+lex: RPAREN
+lex: RPAREN
+lex: LPAREN
+lex: FUNC sval = print
+lex: SYMBOL sval = a
+lex: SYMBOL sval = b
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: lex: EOL
+yacc: program ::= s_expr EOL
+=> 3 5
+5.000000
+> ((let (a 100)) (cond (smaller (rand) 100) (add a 2) (sub a 2)))
+lex: LPAREN
+lex: LPAREN
+lex: LET
+lex: LPAREN
+lex: SYMBOL sval = a
+lex: NUMBER dval = 100.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+lex: RPAREN
+lex: LPAREN
+lex : Condition
+lex: LPAREN
+lex: FUNC sval = smaller
+lex: LPAREN
+lex: FUNC sval = rand
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+rand : 16807.000000
+lex: NUMBER dval = 100.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: LPAREN
+lex: FUNC sval = add
+lex: SYMBOL sval = a
+lex: NUMBER dval = 2.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: LPAREN
+lex: FUNC sval = sub
+lex: SYMBOL sval = a
+lex: NUMBER dval = 2.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: LPAREN COND expr expr expr RPAREN
+lex: RPAREN
+yacc: lex: EOL
+yacc: program ::= s_expr EOL
+98.000000
+> ((let (myA (read))(myB (rand)))(cond (smaller myA myB) (print myA) (print myB)))
+lex: LPAREN
+lex: LPAREN
+lex: LET
+lex: LPAREN
+lex: SYMBOL sval = myA
+lex: LPAREN
+lex: FUNC sval = read
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+read := 232
+lex: RPAREN
+lex: LPAREN
+lex: SYMBOL sval = myB
+lex: LPAREN
+lex: FUNC sval = rand
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+rand : 282475249.000000
+lex: RPAREN
+lex: RPAREN
+lex: LPAREN
+lex : Condition
+lex: LPAREN
+lex: FUNC sval = smaller
+lex: SYMBOL sval = myA
+lex: SYMBOL sval = myB
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: LPAREN
+lex: FUNC sval = print
+lex: SYMBOL sval = myA
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: LPAREN
+lex: FUNC sval = print
+lex: SYMBOL sval = myB
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: LPAREN COND expr expr expr RPAREN
+lex: RPAREN
+yacc: lex: EOL
+yacc: program ::= s_expr EOL
+=> 232
+232.000000
+> ((let (myA (read))(myB (rand)))(cond (smaller myA myB) (print myA) (print myB)))
+lex: LPAREN
+lex: LPAREN
+lex: LET
+lex: LPAREN
+lex: SYMBOL sval = myA
+lex: LPAREN
+lex: FUNC sval = read
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+read := 432256325235352352352353425235232352523532523525
+lex: RPAREN
+lex: LPAREN
+lex: SYMBOL sval = myB
+lex: LPAREN
+lex: FUNC sval = rand
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+rand : 1622650073.000000
+lex: RPAREN
+lex: RPAREN
+lex: LPAREN
+lex : Condition
+lex: LPAREN
+lex: FUNC sval = smaller
+lex: SYMBOL sval = myA
+lex: SYMBOL sval = myB
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: LPAREN
+lex: FUNC sval = print
+lex: SYMBOL sval = myA
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: LPAREN
+lex: FUNC sval = print
+lex: SYMBOL sval = myB
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: LPAREN COND expr expr expr RPAREN
+lex: RPAREN
+yacc: lex: EOL
+yacc: program ::= s_expr EOL
+=> 1622650073
+1622650073.000000
+> (add 1 2 3 4 5)
+lex: LPAREN
+lex: FUNC sval = add
+lex: NUMBER dval = 1.000000
+yacc: s_expr ::= NUMBER
+lex: NUMBER dval = 2.000000
+yacc: s_expr ::= NUMBER
+lex: NUMBER dval = 3.000000
+yacc: s_expr ::= NUMBER
+lex: NUMBER dval = 4.000000
+yacc: s_expr ::= NUMBER
+lex: NUMBER dval = 5.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: EOL
+yacc: program ::= s_expr EOL
+15.000000
+> ((let (integer a 1)(real b 2))(print a b 3))
+lex: LPAREN
+lex: LPAREN
+lex: LET
+lex: LPAREN
+lex:  TYPE sval = integer
+lex: SYMBOL sval = a
+lex: NUMBER dval = 1.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+lex: LPAREN
+lex:  TYPE sval = real
+lex: SYMBOL sval = b
+lex: NUMBER dval = 2.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+lex: RPAREN
+lex: LPAREN
+lex: FUNC sval = print
+lex: SYMBOL sval = a
+lex: SYMBOL sval = b
+lex: NUMBER dval = 3.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: lex: EOL
+yacc: program ::= s_expr EOL
+=> 1 2 3
+3.000000
+> ((let (real myFunc lambda (x y) (mult (add x 5) (sub y 2)))) (sub (myFunc 3 5) 2))
+lex: LPAREN
+lex: LPAREN
+lex: LET
+lex: LPAREN
+lex:  TYPE sval = real
+lex: SYMBOL sval = myFunc
+lex : LAMBDA
+lex: LPAREN
+lex: SYMBOL sval = x
+lex: SYMBOL sval = y
+lex: RPAREN
+lex: LPAREN
+lex: FUNC sval = mult
+lex: LPAREN
+lex: FUNC sval = add
+lex: SYMBOL sval = x
+lex: NUMBER dval = 5.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: LPAREN
+lex: FUNC sval = sub
+lex: SYMBOL sval = y
+lex: NUMBER dval = 2.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+lex: RPAREN
+lex: LPAREN
+lex: FUNC sval = sub
+lex: LPAREN
+lex: SYMBOL sval = myFunc
+lex: NUMBER dval = 3.000000
+yacc: s_expr ::= NUMBER
+lex: NUMBER dval = 5.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: NUMBER dval = 2.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: lex: EOL
+yacc: program ::= s_expr EOL
+22.000000
+> ((let (f lambda (x y) (add x y)))(f (sub 5 2) (mult 2 3)))
+lex: LPAREN
+lex: LPAREN
+lex: LET
+lex: LPAREN
+lex: SYMBOL sval = f
+lex : LAMBDA
+lex: LPAREN
+lex: SYMBOL sval = x
+lex: SYMBOL sval = y
+lex: RPAREN
+lex: LPAREN
+lex: FUNC sval = add
+lex: SYMBOL sval = x
+lex: SYMBOL sval = y
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+lex: RPAREN
+lex: LPAREN
+lex: SYMBOL sval = f
+lex: LPAREN
+lex: FUNC sval = sub
+lex: NUMBER dval = 5.000000
+yacc: s_expr ::= NUMBER
+lex: NUMBER dval = 2.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: LPAREN
+lex: FUNC sval = mult
+lex: NUMBER dval = 2.000000
+yacc: s_expr ::= NUMBER
+lex: NUMBER dval = 3.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: lex: EOL
+yacc: program ::= s_expr EOL
+9.000000
+> ((let (a 1) (f lambda (x y) (add x y)))(f 2 (f a 3)))
+lex: LPAREN
+lex: LPAREN
+lex: LET
+lex: LPAREN
+lex: SYMBOL sval = a
+lex: NUMBER dval = 1.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+lex: LPAREN
+lex: SYMBOL sval = f
+lex : LAMBDA
+lex: LPAREN
+lex: SYMBOL sval = x
+lex: SYMBOL sval = y
+lex: RPAREN
+lex: LPAREN
+lex: FUNC sval = add
+lex: SYMBOL sval = x
+lex: SYMBOL sval = y
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+lex: RPAREN
+lex: LPAREN
+lex: SYMBOL sval = f
+lex: NUMBER dval = 2.000000
+yacc: s_expr ::= NUMBER
+lex: LPAREN
+lex: SYMBOL sval = f
+lex: SYMBOL sval = a
+lex: NUMBER dval = 3.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: lex: EOL
+yacc: program ::= s_expr EOL
+6.000000
+> ((let (a (read)) (b (rand)))(add a (add b (add a ((let (a (read))) (add b a))))))
+lex: LPAREN
+lex: LPAREN
+lex: LET
+lex: LPAREN
+lex: SYMBOL sval = a
+lex: LPAREN
+lex: FUNC sval = read
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+read := 5
+lex: RPAREN
+lex: LPAREN
+lex: SYMBOL sval = b
+lex: LPAREN
+lex: FUNC sval = rand
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+rand : 984943658.000000
+lex: RPAREN
+lex: RPAREN
+lex: LPAREN
+lex: FUNC sval = add
+lex: SYMBOL sval = a
+lex: LPAREN
+lex: FUNC sval = add
+lex: SYMBOL sval = b
+lex: LPAREN
+lex: FUNC sval = add
+lex: SYMBOL sval = a
+lex: LPAREN
+lex: LPAREN
+lex: LET
+lex: LPAREN
+lex: SYMBOL sval = a
+lex: LPAREN
+lex: FUNC sval = read
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+read := 8990
+lex: RPAREN
+lex: RPAREN
+lex: LPAREN
+lex: FUNC sval = add
+lex: SYMBOL sval = b
+lex: SYMBOL sval = a
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: lex: EOL
+yacc: program ::= s_expr EOL
+1969896316.000000
+> ((let (a 2) (f lambda (x y) ((let (b 3)) (add x (mult b y)))))(f (f (f a 2) (mult a 3)) (f a (mult a 5))))
+lex: LPAREN
+lex: LPAREN
+lex: LET
+lex: LPAREN
+lex: SYMBOL sval = a
+lex: NUMBER dval = 2.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+lex: LPAREN
+lex: SYMBOL sval = f
+lex : LAMBDA
+lex: LPAREN
+lex: SYMBOL sval = x
+lex: SYMBOL sval = y
+lex: RPAREN
+lex: LPAREN
+lex: LPAREN
+lex: LET
+lex: LPAREN
+lex: SYMBOL sval = b
+lex: NUMBER dval = 3.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+lex: RPAREN
+lex: LPAREN
+lex: FUNC sval = add
+lex: SYMBOL sval = x
+lex: LPAREN
+lex: FUNC sval = mult
+lex: SYMBOL sval = b
+lex: SYMBOL sval = y
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: lex: RPAREN
+lex: RPAREN
+lex: LPAREN
+lex: SYMBOL sval = f
+lex: LPAREN
+lex: SYMBOL sval = f
+lex: LPAREN
+lex: SYMBOL sval = f
+lex: SYMBOL sval = a
+lex: NUMBER dval = 2.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: LPAREN
+lex: FUNC sval = mult
+lex: SYMBOL sval = a
+lex: NUMBER dval = 3.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: LPAREN
+lex: SYMBOL sval = f
+lex: SYMBOL sval = a
+lex: LPAREN
+lex: FUNC sval = mult
+lex: SYMBOL sval = a
+lex: NUMBER dval = 5.000000
+yacc: s_expr ::= NUMBER
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: LPAREN FUNC expr RPAREN
+lex: RPAREN
+yacc: lex: EOL
+yacc: program ::= s_expr EOL
+122.000000
+> quit
+yacc: s_expr ::= QUIT
