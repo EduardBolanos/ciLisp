@@ -1,4 +1,6 @@
 # ciLisp
+
+# About
 In this multitask project that will use s-expressions. We will call the language ciLisp (Channel Islands Lisp), since it is similar to Lisp programming language.
 This is a challenging project that requires your focus throughout a span of several weeks. There are eight tasks in the project with progressing level of complexity. The later parts are much more challenging than the initial tasks, so to stay on track and being able to wrap things up you should attempt to implement 1 to 2 tasks per week in the initial phase of the project. Completing the later tasks may take longer than a week to accomplish.
 To implement the compiler, you will use flex (lex) and bison (yacc). 
