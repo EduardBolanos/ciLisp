@@ -1,3 +1,5 @@
+This is how your output is suppose to look like:
+
 > (add ((let (abcd 1)) (sub 3 abcd)) 4)
 lex: LPAREN
 lex: FUNC sval = add
