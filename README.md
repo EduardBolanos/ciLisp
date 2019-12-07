@@ -6,3 +6,5 @@ This is a challenging project that requires your focus throughout a span of seve
 To implement the compiler, you will use flex (lex) and bison (yacc). 
 The implementation will span several stages; each stage will add a feature to the compiler. If you complete all stages (i.e., implement all specified features) then you will get maximum results for the whole project; otherwise, you will earn partial results according to the number of features that you will have implemented.
 At each stage, expand the ciLisp compiler to handle compilation of ciLisp programs utilizing the expanded grammar. Then extend the evaluator of abstract syntax trees so it handles the new features. Write a program in ciLisp that forces both the compiler and the evaluator to thoroughly test the new functionality.
+
+This semester project is OUTDATED and most likely WILL NOT be compatiable with the current data that you have now.
